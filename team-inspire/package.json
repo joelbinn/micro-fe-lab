@@ -1,0 +1,16 @@
+{
+  "name": "team-inspire",
+  "version": "1.0.0",
+  "description": "Team Inspire ============ Detta team skapar frontend där man inspireras till olika  produkter.",
+  "main": "pages.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve -p 3012"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "serve": "^12.0.1"
+  }
+}
