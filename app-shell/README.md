@@ -1,46 +1,98 @@
-# Getting Started with Create React App
+# The App Shell
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the app shell the includes the other micro frontends.
 
-## Available Scripts
+Each frontend is included in [index.html](public/index.html):
 
-In the project directory, you can run:
+```html
 
-### `yarn start`
+<script src="http://localhost:3011/team-decide.js" async></script>
+<script src="http://localhost:3012/team-inspire.js" async></script>
+<script src="http://localhost:3013/team-doodle.js" async></script>
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The [App](src/App.tsx) component has routes to each micro-fronten page.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+In order to make the Typescript compiler happy type definitiona for each Custom Element is specified
+in [react-app-env.d.ts](src/react-app-env.d.ts).
 
-### `yarn test`
+## Run
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+In order to run the application, first start the micro frontends.
 
-### `yarn build`
+Open one terminal and do
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```shell
+$ cd team-decide
+$ npm install
+$ npm start
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Open another terminal and do
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```shell
+$ cd team-inspire
+$ npm install
+$ npm start
+```
 
-### `yarn eject`
+Open a third terminal and do
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```shell
+$ cd team-doodle
+$ npm install
+$ npm run serve:prod
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Finally start the app shell
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```shell
+$ cd app-shell
+$ npm install
+$ npm start
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Then open the application at [http://localhost:3000](http://localhost:3000)
 
-## Learn More
+## Application structure
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The application is build around an App Shell and four micro frontends
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- Team Decide, a pure JS application
+- Team Insipre, another pure JS application, but with sub routing
+- Team Doodle, an Angular application
+- Team Noodle, a React application
+
+```puml
+rectangle appshell as "App Shell" 
+rectangle teamdecide as "Team decide"
+rectangle teaminspire as "Team Inspire"
+rectangle teamdoodle as "Team Doodle"
+rectangle teamnoodle as "Team Noodle"
+
+appshell ..> teamdecide
+appshell ..> teaminspire
+appshell ..> teamdoodle
+appshell ..> teamnoodle
+```
+
+The page content is structured as follows
+
+```puml
+rectangle App {
+   rectangle teamdoodlewidget as "<tdo-widget>" {
+   }
+   rectangle pagearea as "Router outlet (only one component is visible)" {
+       rectangle teamdecidepages as "<decide-pages/>" {
+       }
+       rectangle teaminspirepages as "<inspire-pages/>" {
+       }
+       rectangle teamdoodlepage as "<tdo-page/>" {
+       }
+   }
+}
+
+teamdoodlewidget .[hidden]down.> pagearea
+
+```
+

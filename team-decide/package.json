@@ -2,7 +2,7 @@
   "name": "team-decide",
   "version": "1.0.0",
   "description": "Team Inspire ============ Detta team skapar frontend där man inspireras till olika  produkter.",
-  "main": "pages.js",
+  "main": "team-decide.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "serve -p 3011"
