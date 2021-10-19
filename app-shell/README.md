@@ -96,3 +96,15 @@ teamdoodlewidget .[hidden]down.> pagearea
 
 ```
 
+In order to load AMD files, use requirejs.
+
+Kolla in [https://github.com/chriskitson/micro-frontends-with-web-components](https://github.com/chriskitson/micro-frontends-with-web-components)
+
+Problem med SPA+Micro FE:
+- Globala definitioner läcker
+- Sub routing
+- Parallell: Applikationsserver
+  - Gemensam bottenplatta -> JVM
+  - Klassladdarhierarki, men man kan ända få versionskrockar
+- Webpack
+  - Module federation
