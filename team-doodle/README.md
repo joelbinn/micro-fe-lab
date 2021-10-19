@@ -24,18 +24,17 @@ the `WebComponentAppModule` is used.
 
 
 ### Build distro
-To build distro bundle as a single .js-file, run 
-```shell
-$ npm run package
-```
+In order to build a single bundle [npx-build-plus](https://github.com/manfredsteyer/ngx-build-plus) has been added.
 
-This produces the file `./dist/team-doodle.js` which can be served by a server of choice.
+In addition `ng g ngx-build-plus:wc-polyfill` has been executed to add web components polyfil to the app.
 
 Now, in this fake setup we serve it locally and to do that run:
 ```shell
 $ npm run serve:prod
 ```
-Which exposes the .js-file at [http://localhost:3013/team-doodle.js](http://localhost:3013/team-doodle.js)
+Which exposes the .js-files at 
+- [http://localhost:3013/team-doodle/main.js](http://localhost:3013/team-doodle.js)
+- [http://localhost:3013/team-doodle/polyfills.js](http://localhost:3013/polyfills.js)
 so that it can be included by the _[app shell](../app-shell/public/index.html)_.
 
  
