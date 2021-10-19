@@ -5,5 +5,6 @@ declare module JSX {
       'decide-pages': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
       'tdo-page': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
       'tdo-widget': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
+      'tno-page': React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement>;
     }
 }

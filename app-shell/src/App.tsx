@@ -8,6 +8,7 @@ const App: FC = () => (
       <nav>
         <a href="/">Home</a>
         <a href="/doodle">Doodle</a>
+        <a href="/noodle">Noodle</a>
       </nav>
       <div className="widget-area">
         <tdo-widget/>
@@ -26,6 +27,9 @@ const App: FC = () => (
           </Route>
           <Route path="/doodle">
             <tdo-page/>
+          </Route>
+          <Route path="/noodle">
+            <tno-page/>
           </Route>
         </Switch>
       </div>
